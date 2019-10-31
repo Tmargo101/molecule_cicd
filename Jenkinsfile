@@ -14,7 +14,7 @@ pipeline {
       steps {
         sh '''
           pip3.6 install --user -I virtualenv
-          virtualenv virtenv
+          /usr/local/bin/virtualenv virtenv
           source virtenv/bin/activate
           pip install --user -I --upgrade ansible molecule docker
         '''
