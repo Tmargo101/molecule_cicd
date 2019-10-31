@@ -61,6 +61,15 @@ pipeline {
       always {
         cleanWs()
       }
+      success {
+
+      }
+      failure {
+
+      }
+      cleanup {
+
+      }
     }
   }
 }
