@@ -16,7 +16,7 @@ pipeline {
           pip3.6 install --user -I virtualenv
           /usr/local/bin/virtualenv virtenv
           source virtenv/bin/activate
-          pip install --upgrade ansible molecule docker
+          pip install --upgrade molecule docker
         '''
       }
     }
@@ -40,7 +40,7 @@ pipeline {
             sh '''
               source virtenv/bin/activate
               pushd roles/common
-              sudo molecule test
+              molecule test
               popd
               deactivate
             '''
@@ -54,6 +54,12 @@ pipeline {
         sh '''
           echo "MOCK DEPLOYMENT (FOR NOW)"
         '''
+      }
+    }
+
+    post {
+      always {
+        cleanWs()
       }
     }
   }
