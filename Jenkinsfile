@@ -6,6 +6,7 @@ pipeline {
 
     stage ('Stage 1: Get Latest Code') {
       steps {
+        step([$class: 'WsCleanup'])
         checkout scm
       }
     }
@@ -50,6 +51,9 @@ pipeline {
     }
 
     stage ('Stage 5: Deploy') {
+      when {
+        branch 'master'
+      }
       steps {
         sh '''
           echo "MOCK DEPLOYMENT (FOR NOW)"
@@ -59,15 +63,6 @@ pipeline {
 
     post {
       always {
-        cleanWs()
-      }
-      success {
-
-      }
-      failure {
-
-      }
-      cleanup {
 
       }
     }
