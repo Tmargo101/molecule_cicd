@@ -37,7 +37,7 @@ pipeline {
       steps {
         sh '''
           source virtenv/bin/activate
-          molecule test
+          //molecule test
         '''
       }
     }
