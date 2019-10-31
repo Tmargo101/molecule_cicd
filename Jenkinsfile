@@ -61,9 +61,11 @@ pipeline {
       }
     }
 
-    post {
-      always {
-
+    stage ('Stage 6: Post') {
+      post {
+        always {
+          deleteDir()
+        }
       }
     }
   }
