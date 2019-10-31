@@ -60,11 +60,5 @@ pipeline {
         '''
       }
     }
-
-    stage ('Stage 6: Post') {
-      steps {
-        deleteDir()
-      }
-    }
   }
 }
