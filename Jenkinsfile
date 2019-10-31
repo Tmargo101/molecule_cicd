@@ -13,8 +13,6 @@ pipeline {
     stage ('Setup Python virtual environment') {
       steps {
         sh '''
-          export HTTP_PROXY=http://10.123.123.123:8080
-          export HTTPS_PROXY=http://10.123.123.123:8080
           pip3.6 install virtualenv
           virtualenv virtenv
           source virtenv/bin/activate
