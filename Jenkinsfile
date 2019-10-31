@@ -13,10 +13,10 @@ pipeline {
     stage ('Setup Python virtual environment') {
       steps {
         sh '''
-          pip3.6 install virtualenv
+          sudo pip3.6 install virtualenv
           virtualenv virtenv
           source virtenv/bin/activate
-          pip install --upgrade ansible molecule docker
+          sudo pip install --upgrade ansible molecule docker
         '''
       }
     }
