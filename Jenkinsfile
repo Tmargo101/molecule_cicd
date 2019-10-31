@@ -49,7 +49,7 @@ pipeline {
       }
     }
 
-    state ('Stage 5: Deploy') {
+    stage ('Stage 5: Deploy') {
       steps {
         sh '''
           echo "MOCK DEPLOYMENT (FOR NOW)"
