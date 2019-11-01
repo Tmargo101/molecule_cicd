@@ -50,9 +50,9 @@ pipeline {
       }
     }
 
-    stage ('Stage 5: Deploy') {
+    stage ('Stage 5: Deploy to Test Environment') {
       when {
-        branch 'master'
+        branch 'next'
       }
       steps {
         sh '''
