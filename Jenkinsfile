@@ -35,8 +35,8 @@ pipeline {
     }
 
     stage ('Stage 4: Molecule Tests') {
-      parrallel {
-        stages {
+      stages {
+        parrallel {
           stage ('Stage 4.1: Test Common Role') {
             steps {
               sh '''
