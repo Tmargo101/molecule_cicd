@@ -35,16 +35,18 @@ pipeline {
     }
 
     stage ('Stage 4: Molecule Tests') {
-      stages {
-        stage ('Stage 4.1: Test Common Role') {
-          steps {
-            sh '''
-              source virtenv/bin/activate
-              pushd roles/common
-              molecule test
-              popd
-              deactivate
-            '''
+      parrallel {
+        stages {
+          stage ('Stage 4.1: Test Common Role') {
+            steps {
+              sh '''
+                source virtenv/bin/activate
+                pushd roles/common
+                molecule test
+                popd
+                deactivate
+              '''
+            }
           }
         }
       }
