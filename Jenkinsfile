@@ -52,7 +52,7 @@ pipeline {
 
     stage ('Stage 5: Deployment') {
       stages {
-          stage("Deploy into Test Environment") {
+        stage("Deploy into Test Environment") {
           when {
             branch 'next'
           }
@@ -62,7 +62,7 @@ pipeline {
             '''
           } 
         }
-        stage {
+        stage("Deploy into PROD Environment") {
           when {
             branch 'master'
             steps {
