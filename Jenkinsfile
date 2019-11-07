@@ -68,7 +68,7 @@ pipeline {
           }
           steps {
             sh '''
-              echo "MOCK DEPLOYMENT FOR NEXT"
+              echo "MOCK DEPLOYMENT FOR MASTER"
             '''
           } 
         }
