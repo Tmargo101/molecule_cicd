@@ -50,14 +50,28 @@ pipeline {
       }
     }
 
-    stage ('Stage 5: Deploy to Test Environment') {
-      when {
-        branch 'next'
-      }
-      steps {
-        sh '''
-          echo "MOCK DEPLOYMENT (FOR NOW)"
-        '''
+    stage ('Stage 5: Deployment') {
+      stages {
+          stage("Deploy into Test Environment") {
+          when {
+            branch 'next'
+          }
+          steps {
+            sh '''
+              echo "MOCK DEPLOYMENT FOR NEXT"
+            '''
+          } 
+        }
+        stage {
+          when {
+            branch 'master'
+            steps {
+              sh '''
+                echo "MOCK DEPLOYMENT FOR MASTER"
+              '''
+            }
+          }
+        }
       }
     }
   }
