@@ -65,12 +65,12 @@ pipeline {
         stage("Deploy into PROD Environment") {
           when {
             branch 'master'
-            steps {
-              sh '''
-                echo "MOCK DEPLOYMENT FOR MASTER"
-              '''
-            }
           }
+          steps {
+            sh '''
+              echo "MOCK DEPLOYMENT FOR NEXT"
+            '''
+          } 
         }
       }
     }
