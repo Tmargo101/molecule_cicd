@@ -52,7 +52,7 @@ pipeline {
 
     stage ('Stage 5: Deployment') {
       stages {
-        stage("Deploy into MOCK Environment") {
+        stage("Deploy into BUBBAs Environment") {
           when {
             branch 'bubba'
           }
