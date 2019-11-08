@@ -28,6 +28,6 @@ done
 #### DEPLOY #####
 
 #Need to wait for infrastructure to come up. This number arbitrary.
-echo "\n=== Waiting for Infrastructure ===\n"
+echo -e "\n=== Waiting for Infrastructure ===\n"
 sleep 30
 /usr/bin/ansible-playbook -i $HOST_LOC $PLAYBOOK_LOC

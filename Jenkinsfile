@@ -58,7 +58,9 @@ pipeline {
           }
           steps {
             sh '''
-            ./deployment/deploy.sh
+              cd deployment
+              ./deploy.sh
+              cd ../
             '''
           }
         }
