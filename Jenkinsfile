@@ -58,8 +58,7 @@ pipeline {
           }
           steps {
             sh '''
-              echo "MOCK DEPLOYMENT FOR NEXT"
-              echo $USER
+            /usr/bin/dogo bubba 0
             '''
           } 
         }
