@@ -1,4 +1,0 @@
-[www]
-web0 ansible_host=157.245.126.54
-web1 ansible_host=167.99.50.118
-web2 ansible_host=159.65.187.54

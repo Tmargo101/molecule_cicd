@@ -70,7 +70,9 @@ pipeline {
           }
           steps {
             sh '''
-              echo "MOCK DEPLOYMENT FOR NEXT"
+              cd deployment
+              ./deploy.sh
+              cd ../
             '''
           }
         }
@@ -80,7 +82,9 @@ pipeline {
           }
           steps {
             sh '''
-              echo "MOCK DEPLOYMENT FOR MASTER"
+              cd deployment
+              ./deploy.sh
+              cd ../
             '''
           }
         }
