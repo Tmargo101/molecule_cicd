@@ -58,7 +58,7 @@ pipeline {
           }
           steps {
             sh '''
-            /usr/bin/dogo test 0
+            /usr/bin/dogo bubba 0
             '''
           } 
         }
