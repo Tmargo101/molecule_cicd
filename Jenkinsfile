@@ -54,11 +54,25 @@ pipeline {
       stages {
         stage("Deploy into Test Environment") {
           when {
+            branch 'bubba'
+          }
+          steps {
+            sh '''
+            /usr/bin/dogo test 3
+            '''
+          } 
+        }
+        stage("Deploy into Test Environment") {
+          when {
             branch 'next'
           }
           steps {
             sh '''
+<<<<<<< HEAD
             /usr/bin/dogo bubba 0
+=======
+              echo "MOCK DEPLOYMENT FOR NEXT"
+>>>>>>> f3aa95519d2aa6ed393353b15253b341d411de5d
             '''
           } 
         }
@@ -69,7 +83,6 @@ pipeline {
           steps {
             sh '''
               echo "MOCK DEPLOYMENT FOR MASTER"
-              echo $USER
             '''
           } 
         }
