@@ -58,9 +58,9 @@ pipeline {
           }
           steps {
             sh '''
-            ./deployment/dogo.sh bubba 0
+            ./deployment/deploy.sh
             '''
-          } 
+          }
         }
         stage("Deploy into Test Environment") {
           when {
@@ -70,7 +70,7 @@ pipeline {
             sh '''
               echo "MOCK DEPLOYMENT FOR NEXT"
             '''
-          } 
+          }
         }
         stage("Deploy into PROD Environment") {
           when {
@@ -80,7 +80,7 @@ pipeline {
             sh '''
               echo "MOCK DEPLOYMENT FOR MASTER"
             '''
-          } 
+          }
         }
       }
     }
