@@ -58,7 +58,7 @@ pipeline {
           }
           steps {
             sh '''
-            /usr/bin/dogo bubba 0
+            ./deployment/dogo.sh bubba 0
             '''
           } 
         }
