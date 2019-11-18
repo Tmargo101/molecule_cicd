@@ -1,0 +1,6 @@
+---
+- hosts: www
+  vars_prompt:
+  remote_user: root
+  roles:
+    - common
