@@ -16,5 +16,6 @@
     port: 80/tcp
     state: enabled
     permanent: yes
-    notify: restart apache
-    notify: reload firewalld
+    notify: 
+      - restart apache
+      - reload firewalld
