@@ -1,2 +1,12 @@
 ---
+- name: restart apache
+  systemd:
+    service: httpd
+    state: restarted
+    enabled: yes
+
+- name: reload firewalld
+  systemd:
+    service: firewalld
+    state: restarted
 # handlers file for webserver
