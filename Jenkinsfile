@@ -50,14 +50,44 @@ pipeline {
       }
     }
 
-    stage ('Stage 5: Deploy to Test Environment') {
-      when {
-        branch 'next'
-      }
-      steps {
-        sh '''
-          echo "MOCK DEPLOYMENT (FOR NOW)"
-        '''
+    stage ('Stage 5: Deployment') {
+      stages {
+        stage("Deploy into BUBBAs Environment") {
+          when {
+            branch 'bubba'
+          }
+          steps {
+            sh '''
+              cd deployment
+              ./deploy.sh
+              cd ../
+            '''
+          }
+        }
+        stage("Deploy into Test Environment") {
+          when {
+            branch 'next'
+          }
+          steps {
+            sh '''
+              cd deployment
+              ./deploy.sh
+              cd ../
+            '''
+          }
+        }
+        stage("Deploy into PROD Environment") {
+          when {
+            branch 'master'
+          }
+          steps {
+            sh '''
+              cd deployment
+              ./deploy.sh
+              cd ../
+            '''
+          }
+        }
       }
     }
   }
