@@ -1,2 +1,5 @@
 ---
+apache_service: httpd
+apache_state: started
+apache_restart_state: restarted
 # defaults file for webserver

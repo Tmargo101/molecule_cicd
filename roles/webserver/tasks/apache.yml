@@ -3,8 +3,11 @@
   yum:
     name: httpd
     state: present
-  register:
-    httpd
+
+- name: Start httpd
+  service:
+    name: httpd
+    state: "{{ apache_state }}"
 
 - name: Install firewalld
   yum:
@@ -16,6 +19,5 @@
     port: 80/tcp
     state: enabled
     permanent: yes
-    notify: 
-      - restart apache
-      - reload firewalld
+  notify:
+    - restart apache

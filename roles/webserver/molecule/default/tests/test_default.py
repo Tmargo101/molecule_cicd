@@ -24,4 +24,3 @@ def test_apache_conf_file(host):
 def test_apache_running_and_enabled(host):
     httpd = host.service('httpd')
     assert httpd.is_running
-    assert httpd.is_enabled
