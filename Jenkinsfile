@@ -52,16 +52,29 @@ pipeline {
 
     stage ('Stage 5: Deployment') {
       stages {
+        stage("Deploy into BUBBAs Environment") {
+          when {
+            branch 'bubba'
+          }
+          steps {
+            sh '''
+              cd deployment
+              ./deploy.sh
+              cd ../
+            '''
+          }
+        }
         stage("Deploy into Test Environment") {
           when {
             branch 'next'
           }
           steps {
             sh '''
-              echo "MOCK DEPLOYMENT FOR NEXT"
-              echo $USER
+              cd deployment
+              ./deploy.sh
+              cd ../
             '''
-          } 
+          }
         }
         stage("Deploy into PROD Environment") {
           when {
@@ -69,10 +82,11 @@ pipeline {
           }
           steps {
             sh '''
-              echo "MOCK DEPLOYMENT FOR MASTER"
-              echo $USER
+              cd deployment
+              ./deploy.sh
+              cd ../
             '''
-          } 
+          }
         }
       }
     }
