@@ -1,14 +1,8 @@
 ---
-- name: Install httpd
+- name: Install nginx
   yum:
-    name: httpd
+    name: nginx
     state: present
-
-- name: Allow httpd to connect to network
-  seboolean:
-    name: httpd_can_network_connect
-    state: yes
-    persistent: yes
 
 - name: Ensure sites-available exists
   file:
