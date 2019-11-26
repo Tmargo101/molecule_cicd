@@ -8,3 +8,21 @@
     name: httpd_can_network_connect
     state: yes
     persistent: yes
+
+- name: Replace configuration to set listen port to 8080
+  copy:
+    src: httpd.conf
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    mode: '0644'
+  register:
+    httpd
+
+
+- name: Start httpd
+  systemd:
+    service: httpd
+    state: restarted
+  when:
+    httpd.changed
