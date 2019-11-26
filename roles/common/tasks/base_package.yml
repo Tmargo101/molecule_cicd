@@ -10,3 +10,9 @@
     - python3
     - python-jinja2
     state: present
+
+- name: Install selinux add-ons
+  yum:
+    name:
+    - libsemanage-python
+    state: present
