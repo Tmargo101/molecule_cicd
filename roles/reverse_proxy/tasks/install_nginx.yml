@@ -24,7 +24,7 @@
   register:
     load_balancer
 
-- name: Repalce nginx main conf file
+- name: Replace nginx main conf file
   copy:
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
