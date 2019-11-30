@@ -1,4 +1,9 @@
 ---
+- name: Ensure epel-release is installed
+  yum:
+    name: epel-release
+    state: present
+
 - name: Install nginx
   yum:
     name: nginx
@@ -60,3 +65,8 @@
     state: restarted
   when:
     load_balancer.changed
+
+# - name: Restart Nginx
+#   command: nginx -s reload
+#   when:
+#     load_balancer.changed

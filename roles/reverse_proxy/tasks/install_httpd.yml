@@ -3,11 +3,11 @@
     name: httpd
     state: present
 
-- name: Allow httpd to connect to network
-  seboolean:
-    name: httpd_can_network_connect
-    state: yes
-    persistent: yes
+# - name: Allow httpd to connect to network
+#   seboolean:
+#     name: httpd_can_network_connect
+#     state: yes
+#     persistent: yes
 
 - name: Replace configuration to set listen port to 8080
   copy:

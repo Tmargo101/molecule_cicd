@@ -1,9 +1,13 @@
+- name: Check that firewalld is installed
+  yum:
+    name: firewalld
+    state: present
+
 - name: Open port 80/tcp
   firewalld:
     port: 80/tcp
     state: enabled
-    permanent: yes
-  register:
+  registher:
     firewall
 
 - name: Reload firewalld
