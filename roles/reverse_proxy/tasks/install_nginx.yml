@@ -65,8 +65,3 @@
     state: restarted
   when:
     load_balancer.changed
-
-# - name: Restart Nginx
-#   command: nginx -s reload
-#   when:
-#     load_balancer.changed
