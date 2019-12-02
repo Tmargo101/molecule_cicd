@@ -1,0 +1,26 @@
+---
+#Installs nfs
+- name: Install nfs
+  yum:
+    name: nfs-utils
+    state: present
+
+#starts nfs service
+- name: Start nfs
+  service:
+    name: nfs-server
+    state: started
+    enabled: yes
+
+#Create directory that will be shared out
+- name: Create directory
+  file:
+   path: /var/nfsshare
+   state: directory
+   owner: nfsnobody
+   group: nfsnobody
+   mode: '777'
+
+#Allows All ip's to access the  share folder
+- name: copy /etc/exports
+  template: src=exports.j2 dest=/etc/exports owner=root group=root
