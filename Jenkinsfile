@@ -74,19 +74,7 @@ pipeline {
 
     stage ('Stage 5: Deployment') {
       stages {
-        stage("Deploy into BUBBAs Environment") {
-          when {
-            branch 'bubba'
-          }
-          steps {
-            sh '''
-              cd deployment
-              ./deploy.sh
-              cd ../
-            '''
-          }
-        }
-        stage("Deploy into Test Environment") {
+        stage("Deploy into TEST Environment") {
           when {
             branch 'next'
           }
