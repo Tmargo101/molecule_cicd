@@ -7,14 +7,12 @@ lint:
   name: yamllint
 platforms:
   - name: instance
-    image: centos:7
-    command: /sbin/init
-    #   privileged: True
-    tmpfs:
-      - /run
-      - /tmp
+    image: "geerlingguy/docker-centos7-ansible:latest"
+    command: ""
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
 provisioner:
   name: ansible
   lint:
