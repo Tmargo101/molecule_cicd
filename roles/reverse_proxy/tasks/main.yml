@@ -1,0 +1,12 @@
+---
+# tasks file for reverse_proxy
+
+- import_tasks: install_httpd.yml
+  tags: install_httpd
+
+- import_tasks: install_nginx.yml
+  tags: install_nginx
+
+- import_tasks: firewall_config.yml
+  tags: firewall_config
+  

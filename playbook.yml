@@ -1,0 +1,9 @@
+
+---
+- hosts: test
+  remote_user: admin
+  become: yes
+  become_method: sudo
+  roles:
+    - common
+    - reverse_proxy

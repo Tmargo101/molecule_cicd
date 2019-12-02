@@ -1,0 +1,67 @@
+---
+- name: Ensure epel-release is installed
+  yum:
+    name: epel-release
+    state: present
+
+- name: Install nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: Ensure sites-available exists
+  file:
+    path: /etc/nginx/sites-available
+    owner: root
+    group: root
+    mode: '0755'
+    state: directory
+  register:
+    load_balancer
+
+- name: Ensure sites-enabled exists
+  file:
+    path: /etc/nginx/sites-enabled
+    owner: root
+    group: root
+    mode: '0755'
+    state: directory
+  register:
+    load_balancer
+
+- name: Replace nginx main conf file
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: '0600'
+  register:
+    load_balancer
+
+- name: Copy site configuration file
+  copy:
+    src: revproxy.conf
+    dest: /etc/nginx/sites-available/revproxy.conf
+    owner: root
+    group: root
+    mode: '0644'
+  register:
+    load_balancer
+
+- name: Enable site configuration file
+  file:
+    src: /etc/nginx/sites-available/revproxy.conf
+    dest: /etc/nginx/sites-enabled/revproxy.conf
+    owner: root
+    group: root
+    mode: '0644'
+    state: link
+  register: load_balancer
+
+- name: Restart Nginx
+  systemd:
+    service: nginx
+    state: restarted
+  when:
+    load_balancer.changed
