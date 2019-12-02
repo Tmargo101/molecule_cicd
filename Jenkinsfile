@@ -47,24 +47,34 @@ pipeline {
             '''
           }
         }
+        stage ('Stage 4.2: Test Reverse Proxy Role') {
+          steps {
+            sh '''
+              source virtenv/bin/activate
+              pushd roles/reverse_proxy
+              molecule test
+              popd
+              deactivate
+            '''
+          }
+        }
+        stage ('Stage 4.3: Test Web Server Role') {
+          steps {
+            sh '''
+              source virtenv/bin/activate
+              pushd roles/webserver
+              molecule test
+              popd
+              deactivate
+            '''
+          }
+        }
       }
     }
 
     stage ('Stage 5: Deployment') {
       stages {
-        stage("Deploy into BUBBAs Environment") {
-          when {
-            branch 'bubba'
-          }
-          steps {
-            sh '''
-              cd deployment
-              ./deploy.sh
-              cd ../
-            '''
-          }
-        }
-        stage("Deploy into Test Environment") {
+        stage("Deploy into TEST Environment") {
           when {
             branch 'next'
           }
