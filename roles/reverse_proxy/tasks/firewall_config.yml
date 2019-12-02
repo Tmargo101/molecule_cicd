@@ -3,6 +3,11 @@
     name: firewalld
     state: present
 
+- name: Check that firewalld is started
+  systemd:
+    service: firewalld
+    state: started
+
 - name: Open port 80/tcp
   firewalld:
     port: 80/tcp
