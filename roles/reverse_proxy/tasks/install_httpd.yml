@@ -16,13 +16,5 @@
     owner: root
     group: root
     mode: '0644'
-  register:
-    httpd
-
-
-- name: Start httpd
-  systemd:
-    service: httpd
-    state: restarted
-  when:
-    httpd.changed
+  notify:
+    - restart apache

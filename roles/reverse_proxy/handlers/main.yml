@@ -1,2 +1,15 @@
 ---
-# handlers file for reverse_proxy
+- name: restart apache
+  service:
+    name: httpd
+    state: restarted
+
+- name: reload firewalld
+  systemd:
+    service: firewalld
+    state: restarted
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted

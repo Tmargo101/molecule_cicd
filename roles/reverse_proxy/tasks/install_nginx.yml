@@ -9,6 +9,11 @@
     name: nginx
     state: present
 
+- name: Start httpd
+  service:
+    name: nginx
+    state: started
+
 - name: Ensure sites-available exists
   file:
     path: /etc/nginx/sites-available
@@ -58,10 +63,3 @@
     mode: '0644'
     state: link
   register: load_balancer
-
-- name: Restart Nginx
-  systemd:
-    service: nginx
-    state: restarted
-  when:
-    load_balancer.changed

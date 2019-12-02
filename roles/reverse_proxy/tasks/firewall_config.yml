@@ -12,12 +12,4 @@
   firewalld:
     port: 80/tcp
     state: enabled
-  register:
-    firewall
-
-- name: Reload firewalld
-  systemd:
-    service: firewalld
-    state: restarted
-  when:
-    firewall.changed
+    permanent: yes
